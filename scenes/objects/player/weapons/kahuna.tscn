@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://csg8tg2yc54a4"]
+
+[ext_resource type="PackedScene" uid="uid://cxreynnvieel8" path="res://models/player/weapons/Kahuna.glb" id="1_txtwx"]
+[ext_resource type="Script" path="res://scenes/objects/player/weapons/kahuna.gd" id="2_hxcl1"]
+[ext_resource type="Texture2D" uid="uid://c6orn0tlc4a30" path="res://models/player/weapons/Kahuna_KahunaTexture.png" id="3_38wq3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luk1y"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_38wq3")
+
+[node name="Kahuna" instance=ExtResource("1_txtwx")]
+script = ExtResource("2_hxcl1")
+
+[node name="Skeleton3D" parent="Gemini0" index="0"]
+bones/0/position = Vector3(0, 0, 0)
+bones/8/rotation = Quaternion(0.99716, 2.79759e-14, 2.37741e-07, -0.0753068)
+bones/12/position = Vector3(0.421783, 0.126246, 0.223843)
+bones/12/rotation = Quaternion(-0.712759, -0.0671875, -0.23422, -0.657724)
+bones/13/rotation = Quaternion(-0.0829283, 0.742693, -0.0390431, 0.663329)
+bones/14/rotation = Quaternion(-0.000142764, -0.0936789, -0.00536737, 0.995588)
+bones/15/rotation = Quaternion(0.00275095, -0.121406, 0.0106328, 0.992542)
+bones/16/rotation = Quaternion(0.0169527, -0.0274101, 0.125529, 0.991566)
+bones/17/rotation = Quaternion(-0.158007, -0.322132, -0.27815, 0.891009)
+bones/20/position = Vector3(-0.0217832, 0.260477, -0.972812)
+bones/20/rotation = Quaternion(-0.785377, 0.618857, 0.00903668, 0.0108149)
+bones/21/rotation = Quaternion(-0.475912, -0.608888, 0.537023, 0.338187)
+bones/22/rotation = Quaternion(0.160508, 0.0863938, -0.0287797, 0.982825)
+bones/23/rotation = Quaternion(-0.0451013, -0.0099703, 0.00225649, 0.99893)
+bones/38/rotation = Quaternion(-8.49768e-08, 0.99114, -0.132825, -7.83747e-07)
+bones/40/position = Vector3(-0.111667, 2.174, 0.0207067)
+bones/40/rotation = Quaternion(-0.0129252, -0.00400175, 0.0193345, 0.999722)
+bones/41/rotation = Quaternion(0.707107, -4.73711e-07, -4.73876e-07, 0.707107)
+bones/43/position = Vector3(-1.21072e-08, 0.386875, 1.29645)
+bones/45/position = Vector3(-0.124541, 3.07044, 2.43848)
+bones/45/scale = Vector3(0.1, 0.1, 0.1)
+
+[node name="arms" parent="Gemini0/Skeleton3D" index="0"]
+layers = 64
+gi_mode = 2
+
+[node name="flash" parent="Gemini0/Skeleton3D" index="1"]
+layers = 64
+material_override = SubResource("StandardMaterial3D_luk1y")
+
+[node name="hands" parent="Gemini0/Skeleton3D" index="2"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_001" parent="Gemini0/Skeleton3D" index="3"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_002" parent="Gemini0/Skeleton3D" index="4"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_003" parent="Gemini0/Skeleton3D" index="5"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_004" parent="Gemini0/Skeleton3D" index="6"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_005" parent="Gemini0/Skeleton3D" index="7"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_006" parent="Gemini0/Skeleton3D" index="8"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_007" parent="Gemini0/Skeleton3D" index="9"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_009" parent="Gemini0/Skeleton3D" index="10"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_010" parent="Gemini0/Skeleton3D" index="11"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_011" parent="Gemini0/Skeleton3D" index="12"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_012" parent="Gemini0/Skeleton3D" index="13"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_015" parent="Gemini0/Skeleton3D" index="14"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_016" parent="Gemini0/Skeleton3D" index="15"]
+layers = 64
+gi_mode = 2
+
+[node name="Weapon_017" parent="Gemini0/Skeleton3D" index="16"]
+layers = 64
+gi_mode = 2
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Idle"

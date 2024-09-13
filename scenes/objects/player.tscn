@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c14yqrr3v517m"]
+
+[ext_resource type="Script" path="res://scenes/objects/player.gd" id="1_dpj2d"]
+[ext_resource type="PackedScene" uid="uid://g2cy37dy027l" path="res://models/player/world.glb" id="1_qc27x"]
+[ext_resource type="PackedScene" uid="uid://csg8tg2yc54a4" path="res://scenes/objects/player/weapons/kahuna.tscn" id="3_22u2e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5q4gb"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 21
+script = ExtResource("1_dpj2d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_5q4gb")
+
+[node name="WorldModel" parent="." instance=ExtResource("1_qc27x")]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
+
+[node name="Cameras" type="Node3D" parent="."]
+
+[node name="FirstPersonCamera" type="Camera3D" parent="Cameras"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+cull_mask = 1048574
+current = true
+fov = 90.0
+
+[node name="Weapons" type="Node3D" parent="Cameras/FirstPersonCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="Kahuna" parent="Cameras/FirstPersonCamera/Weapons" instance=ExtResource("3_22u2e")]
+transform = Transform3D(-2.18557e-08, -1.91069e-15, -0.5, -4.37114e-08, 0.5, 0, -0.5, -4.37114e-08, 2.18557e-08, 0, 1.4, 0.15)
+
+[node name="ThirdPersonCamera" type="Camera3D" parent="Cameras"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2.5, 3)
+fov = 90.0
