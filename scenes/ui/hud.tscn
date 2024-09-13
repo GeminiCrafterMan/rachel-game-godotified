@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw5db61ywuftn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxfc"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -48.0
+offset_right = 280.0
+offset_bottom = -21.0
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ojxfc")
+value = 100.0

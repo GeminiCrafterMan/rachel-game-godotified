@@ -1,10 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://c14yqrr3v517m"]
+[gd_scene load_steps=12 format=3 uid="uid://c14yqrr3v517m"]
 
 [ext_resource type="Script" path="res://scenes/objects/player.gd" id="1_dpj2d"]
-[ext_resource type="PackedScene" uid="uid://g2cy37dy027l" path="res://models/player/world.glb" id="1_qc27x"]
+[ext_resource type="PackedScene" uid="uid://b2070o2xrpvxm" path="res://resources/Models/Player/world.blend" id="2_o5pnn"]
 [ext_resource type="PackedScene" uid="uid://csg8tg2yc54a4" path="res://scenes/objects/player/weapons/kahuna.tscn" id="3_22u2e"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="4_f6syw"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="5_0noxr"]
+[ext_resource type="AudioStream" uid="uid://brbspw6hc4hvn" path="res://sounds/player/jump.wav" id="6_mnyf7"]
+[ext_resource type="AudioStream" uid="uid://c8jmmjciry514" path="res://sounds/player/land.wav" id="7_l8ijv"]
+[ext_resource type="PackedScene" uid="uid://cw5db61ywuftn" path="res://scenes/ui/hud.tscn" id="8_6ckix"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5q4gb"]
+radius = 0.4
+
+[sub_resource type="Resource" id="Resource_7mg3l"]
+script = ExtResource("5_0noxr")
+name = "jump"
+bus = ""
+volume = -8.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("6_mnyf7")])
+
+[sub_resource type="Resource" id="Resource_7qg7o"]
+script = ExtResource("5_0noxr")
+name = "land"
+bus = ""
+volume = -8.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("7_l8ijv")])
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -15,14 +37,56 @@ script = ExtResource("1_dpj2d")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_5q4gb")
 
-[node name="WorldModel" parent="." instance=ExtResource("1_qc27x")]
-transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
+[node name="WorldModel" parent="." instance=ExtResource("2_o5pnn")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
+
+[node name="arms" parent="WorldModel/Gemini0/Skeleton3D" index="0"]
+layers = 2
+
+[node name="cutter" parent="WorldModel/Gemini0/Skeleton3D" index="1"]
+layers = 2
+
+[node name="ears" parent="WorldModel/Gemini0/Skeleton3D" index="2"]
+layers = 2
+
+[node name="gun" parent="WorldModel/Gemini0/Skeleton3D" index="3"]
+layers = 2
+
+[node name="hair" parent="WorldModel/Gemini0/Skeleton3D" index="4"]
+layers = 2
+
+[node name="hair_det" parent="WorldModel/Gemini0/Skeleton3D" index="5"]
+layers = 2
+
+[node name="hands" parent="WorldModel/Gemini0/Skeleton3D" index="6"]
+layers = 2
+
+[node name="head_GameEdit" parent="WorldModel/Gemini0/Skeleton3D" index="7"]
+layers = 2
+
+[node name="legs" parent="WorldModel/Gemini0/Skeleton3D" index="8"]
+layers = 2
+
+[node name="neck" parent="WorldModel/Gemini0/Skeleton3D" index="9"]
+layers = 2
+
+[node name="scarf1" parent="WorldModel/Gemini0/Skeleton3D" index="10"]
+layers = 2
+
+[node name="scarf2" parent="WorldModel/Gemini0/Skeleton3D" index="11"]
+layers = 2
+
+[node name="shoes" parent="WorldModel/Gemini0/Skeleton3D" index="12"]
+layers = 2
+
+[node name="sweatshirt" parent="WorldModel/Gemini0/Skeleton3D" index="13"]
+layers = 2
 
 [node name="Cameras" type="Node3D" parent="."]
 
 [node name="FirstPersonCamera" type="Camera3D" parent="Cameras"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-cull_mask = 1048574
+cull_mask = 1048573
 current = true
 fov = 90.0
 
@@ -34,4 +98,14 @@ transform = Transform3D(-2.18557e-08, -1.91069e-15, -0.5, -4.37114e-08, 0.5, 0, 
 
 [node name="ThirdPersonCamera" type="Camera3D" parent="Cameras"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2.5, 3)
+cull_mask = 1048511
 fov = 90.0
+
+[node name="SoundBank" type="Node" parent="."]
+script = ExtResource("4_f6syw")
+label = "player"
+events = Array[ExtResource("5_0noxr")]([SubResource("Resource_7mg3l"), SubResource("Resource_7qg7o")])
+
+[node name="HUD" parent="." instance=ExtResource("8_6ckix")]
+
+[editable path="WorldModel"]
