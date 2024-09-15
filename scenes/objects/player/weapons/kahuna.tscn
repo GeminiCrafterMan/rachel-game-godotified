@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://csg8tg2yc54a4"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/weapons/kahuna.gd" id="2_hxcl1"]
-[ext_resource type="PackedScene" uid="uid://bw332l300yj51" path="res://resources/Models/Player/Weapons/Kahuna.blend" id="2_lf6rx"]
-[ext_resource type="Texture2D" uid="uid://bwpt6y5dpdtpc" path="res://resources/Models/Player/Weapons/KahunaTexture.png" id="3_heosm"]
+[ext_resource type="PackedScene" uid="uid://bw332l300yj51" path="res://models/Player/Weapons/Kahuna.blend" id="2_lf6rx"]
+[ext_resource type="Texture2D" uid="uid://bwpt6y5dpdtpc" path="res://models/Player/Weapons/KahunaTexture.png" id="3_heosm"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="4_8vlan"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="5_uf41t"]
 [ext_resource type="AudioStream" uid="uid://bi0ykd6asfqy3" path="res://sounds/player/weapons/kahuna/Fire1.wav" id="6_uatbc"]

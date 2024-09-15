@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw5db61ywuftn"]
+[gd_scene load_steps=4 format=3 uid="uid://cw5db61ywuftn"]
+
+[ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_ew2cb"]
+[ext_resource type="Texture2D" uid="uid://bnc2sdgprmw6h" path="res://textures/ui/kickCooldown.png" id="3_yylcp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxfc"]
 bg_color = Color(1, 0, 0, 1)
@@ -8,15 +11,42 @@ corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_ew2cb")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -48.0
-offset_right = 280.0
-offset_bottom = -21.0
+offset_left = -280.0
+offset_top = -144.0
+offset_right = -24.0
+offset_bottom = -112.0
 grow_vertical = 0
 theme_override_styles/fill = SubResource("StyleBoxFlat_ojxfc")
 value = 100.0
+metadata/_edit_use_anchors_ = true
+
+[node name="KickCooldown" type="TextureProgressBar" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -104.0
+offset_right = 208.0
+offset_bottom = 296.0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+max_value = 4.0
+step = 0.001
+fill_mode = 4
+texture_under = ExtResource("3_yylcp")
+texture_progress = ExtResource("3_yylcp")
+tint_progress = Color(0.313726, 0.313726, 0.313726, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="StateTracker" type="RichTextLabel" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 48.0
+text = "Idle"

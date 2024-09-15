@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6q52fo7dtilb"]
+
+[ext_resource type="PackedScene" uid="uid://bxyltcs7o821e" path="res://models/Player/Weapons/Evening Star.blend" id="1_mc05j"]
+
+[node name="Evening Star" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1_mc05j")]
+
+[node name="Skeleton3D" parent="Model/Gemini0" index="0"]
+bones/1/rotation = Quaternion(0.0951591, 1.18668e-07, 1.13438e-08, 0.995462)
+bones/2/rotation = Quaternion(-0.0184329, 2.14414e-14, -4.39475e-09, 0.99983)
+bones/3/rotation = Quaternion(-0.0977716, 2.23114e-16, -2.33106e-08, 0.995209)
+bones/4/rotation = Quaternion(0.00677673, -2.12509e-17, 1.6157e-09, 0.999977)
+bones/5/rotation = Quaternion(0.411185, 1.08665e-07, 1.47051e-07, 0.911552)
+bones/6/rotation = Quaternion(-0.257208, 9.92629e-14, -1.22647e-07, 0.966356)
+bones/7/rotation = Quaternion(-0.140537, -1.18026e-07, -5.02599e-08, 0.990075)
+bones/8/rotation = Quaternion(0.99716, 2.79759e-14, 2.37741e-07, -0.0753068)
+bones/9/rotation = Quaternion(-0.0412805, 3.98632e-15, -9.84202e-09, 0.999148)
+bones/10/rotation = Quaternion(-0.0438047, 3.73671e-15, -1.04438e-08, 0.99904)
+bones/11/rotation = Quaternion(-0.00833551, -1.19189e-07, 9.93532e-10, 0.999965)
+bones/12/position = Vector3(0.276556, 0.0874777, 0.211537)
+bones/12/rotation = Quaternion(-0.74409, -0.355163, -0.381766, -0.417665)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-0.156139, 0.76085, -0.125724, 0.617188)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(0.259144, 0.0676058, -0.0786691, 0.960253)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.00700575, -0.227807, -0.0207571, 0.97346)
+bones/16/rotation = Quaternion(0.0120982, -8.36314e-08, 0.224481, 0.974403)
+bones/17/rotation = Quaternion(-0.0313877, 0.00029278, -0.484345, 0.874314)
+bones/18/rotation = Quaternion(0.0922289, -0.00749141, -0.0890549, 0.991719)
+bones/18/scale = Vector3(1, 1, 1)
+bones/20/position = Vector3(-0.221783, 0.231917, 0.0267804)
+bones/20/rotation = Quaternion(-0.570956, 0.437097, 0.552061, -0.422118)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(-0.0190079, -0.7444, 0.0386472, 0.666344)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(0.166003, 0.082575, 0.0526461, 0.981251)
+bones/23/rotation = Quaternion(-0.0404145, -0.0148604, -0.0609766, 0.99721)
+bones/24/rotation = Quaternion(0.0120982, 6.61883e-08, -0.224481, 0.974403)
+bones/25/rotation = Quaternion(-0.0313878, -0.000292738, 0.484345, 0.874314)
+bones/26/rotation = Quaternion(0.0922289, 0.00749142, 0.0890549, 0.991719)
+bones/27/rotation = Quaternion(-0.11493, -0.00603293, -0.0700558, 0.990882)
+bones/28/rotation = Quaternion(-0.136478, -0.784147, -0.309839, 0.520084)
+bones/29/rotation = Quaternion(-0.136478, 0.784147, 0.309839, 0.520085)
+bones/29/scale = Vector3(1, 1, 1)
+bones/30/rotation = Quaternion(0.99189, 2.98045e-10, 2.36446e-07, 0.127096)
+bones/30/scale = Vector3(1, 1, 0.999996)
+bones/31/rotation = Quaternion(0.0980697, 2.9477e-11, 2.36806e-08, 0.99518)
+bones/32/rotation = Quaternion(-0.64305, 4.56469e-07, -5.36604e-07, 0.765824)
+bones/33/rotation = Quaternion(8.49769e-08, 0.991139, -0.132826, 7.83747e-07)
+bones/33/scale = Vector3(1, 1, 1)
+bones/34/rotation = Quaternion(0.698845, 0.698845, -0.107774, 0.107775)
+bones/34/scale = Vector3(1, 1, 1)
+bones/35/rotation = Quaternion(0.99189, -3.0004e-08, -3.86723e-11, 0.127096)
+bones/35/scale = Vector3(1, 1, 0.999996)
+bones/36/rotation = Quaternion(0.0980697, 2.94522e-11, -2.30825e-08, 0.99518)
+bones/37/rotation = Quaternion(-0.64305, -4.56469e-07, 5.36604e-07, 0.765824)
+bones/38/rotation = Quaternion(-8.49768e-08, 0.99114, -0.132825, -7.83747e-07)
+bones/38/scale = Vector3(1, 1, 1)
+bones/39/rotation = Quaternion(0.698845, -0.698845, 0.107774, 0.107775)
+bones/39/scale = Vector3(1, 1, 1)
+bones/40/position = Vector3(0.0361352, 2.49605, 2.20421)
+bones/40/scale = Vector3(0.855, 0.855, 8.55)
+
+[node name="arms" parent="Model/Gemini0/Skeleton3D" index="0"]
+layers = 64
+
+[node name="gun" parent="Model/Gemini0/Skeleton3D" index="1"]
+layers = 64
+
+[node name="hands" parent="Model/Gemini0/Skeleton3D" index="2"]
+layers = 64
+
+[node name="StarTexture" parent="Model/Gemini0/Skeleton3D" index="3"]
+layers = 64
+
+[node name="AnimationPlayer" parent="Model" index="1"]
+autoplay = "Idle"
+
+[editable path="Model"]
