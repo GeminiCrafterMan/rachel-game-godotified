@@ -33,7 +33,7 @@ GameState="*res://autoload/game_state.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gridmap-plus/plugin.cfg", "res://addons/resonate/plugin.cfg", "res://addons/state_machine_nodes/plugin.cfg")
+enabled=PackedStringArray("res://addons/boujie_water_shader/plugin.cfg", "res://addons/goshapes/plugin.cfg", "res://addons/gridmap-plus/plugin.cfg", "res://addons/resonate/plugin.cfg", "res://addons/state_machine_nodes/plugin.cfg")
 
 [input]
 

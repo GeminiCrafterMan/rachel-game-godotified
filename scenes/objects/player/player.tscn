@@ -1,24 +1,60 @@
-[gd_scene load_steps=20 format=3 uid="uid://c14yqrr3v517m"]
+[gd_scene load_steps=57 format=3 uid="uid://c14yqrr3v517m"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_dpj2d"]
 [ext_resource type="PackedScene" uid="uid://b2070o2xrpvxm" path="res://models/Player/world.blend" id="2_o5pnn"]
-[ext_resource type="PackedScene" uid="uid://csg8tg2yc54a4" path="res://scenes/objects/player/weapons/kahuna.tscn" id="3_22u2e"]
+[ext_resource type="PackedScene" uid="uid://csg8tg2yc54a4" path="res://scenes/objects/player/weapons/kahuna/kahuna.tscn" id="3_22u2e"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="4_f6syw"]
 [ext_resource type="PackedScene" uid="uid://c6q52fo7dtilb" path="res://scenes/objects/player/weapons/evening_star.tscn" id="4_m7ewg"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="5_0noxr"]
 [ext_resource type="AudioStream" uid="uid://brbspw6hc4hvn" path="res://sounds/player/jump.wav" id="6_mnyf7"]
-[ext_resource type="AudioStream" uid="uid://c8jmmjciry514" path="res://sounds/player/land.wav" id="7_l8ijv"]
 [ext_resource type="PackedScene" uid="uid://cw5db61ywuftn" path="res://scenes/ui/hud.tscn" id="8_6ckix"]
+[ext_resource type="AudioStream" uid="uid://uh5e2fcqfjqu" path="res://sounds/player/footsteps/stepdirt_1.wav" id="9_ptm0h"]
 [ext_resource type="Script" path="res://addons/state_machine_nodes/state_machine.gd" id="10_05sjf"]
+[ext_resource type="AudioStream" uid="uid://dh6fopyyhrtq6" path="res://sounds/player/footsteps/stepdirt_2.wav" id="10_n843i"]
 [ext_resource type="Script" path="res://scenes/objects/player/states/common_state.gd" id="11_7h62c"]
 [ext_resource type="Script" path="res://scenes/objects/player/states/idle.gd" id="11_cdtuv"]
+[ext_resource type="AudioStream" uid="uid://caejy26kje2m4" path="res://sounds/player/footsteps/stepdirt_3.wav" id="11_mfoch"]
 [ext_resource type="Script" path="res://scenes/objects/player/states/walk.gd" id="12_em8ir"]
+[ext_resource type="AudioStream" uid="uid://ba80dd68yyxh7" path="res://sounds/player/footsteps/stepdirt_4.wav" id="12_yp0td"]
+[ext_resource type="AudioStream" uid="uid://ci375y3864gnf" path="res://sounds/player/footsteps/stepdirt_5.wav" id="13_3unnm"]
 [ext_resource type="Script" path="res://scenes/objects/player/states/jump.gd" id="13_lhipt"]
+[ext_resource type="AudioStream" uid="uid://dh5chu0exbkug" path="res://sounds/player/footsteps/stepdirt_6.wav" id="14_angks"]
 [ext_resource type="Script" path="res://scenes/objects/player/states/fall.gd" id="14_gtayp"]
+[ext_resource type="AudioStream" uid="uid://fxjy60u2bq6y" path="res://sounds/player/footsteps/stepdirt_7.wav" id="15_6k3ux"]
+[ext_resource type="AudioStream" uid="uid://bbifyprxbnuv2" path="res://sounds/player/footsteps/stepdirt_8.wav" id="16_nhrly"]
 [ext_resource type="Script" path="res://scenes/objects/player/states/kick.gd" id="16_y4b88"]
+[ext_resource type="Script" path="res://scenes/objects/player/states/slide.gd" id="17_aev0o"]
+[ext_resource type="AudioStream" uid="uid://3x8gjldlw02f" path="res://sounds/player/footsteps/stepsnow_1.wav" id="17_ecfib"]
+[ext_resource type="AudioStream" uid="uid://jrkqol2hpoo" path="res://sounds/player/footsteps/stepsnow_2.wav" id="18_3wqqk"]
+[ext_resource type="AudioStream" uid="uid://c4xjsbnma1k7" path="res://sounds/player/footsteps/stepstone_1.wav" id="19_cdphg"]
+[ext_resource type="AudioStream" uid="uid://dvr3gwseg7oso" path="res://sounds/player/footsteps/stepstone_2.wav" id="20_qgny0"]
+[ext_resource type="AudioStream" uid="uid://rllxsksbc4df" path="res://sounds/player/footsteps/stepstone_3.wav" id="21_64qhb"]
+[ext_resource type="AudioStream" uid="uid://dv6ruog2fwrb" path="res://sounds/player/footsteps/stepstone_4.wav" id="22_4ksfo"]
+[ext_resource type="AudioStream" uid="uid://u0g433f6rgoo" path="res://sounds/player/footsteps/stepstone_5.wav" id="23_iah2f"]
+[ext_resource type="AudioStream" uid="uid://btgabcdv6qe86" path="res://sounds/player/footsteps/stepstone_6.wav" id="24_s2h0g"]
+[ext_resource type="AudioStream" uid="uid://bses1nv7bl5b" path="res://sounds/player/footsteps/stepstone_7.wav" id="25_cnq1g"]
+[ext_resource type="AudioStream" uid="uid://cqcmovf7jiw3b" path="res://sounds/player/footsteps/stepstone_8.wav" id="26_2nieb"]
+[ext_resource type="AudioStream" uid="uid://rspvc6vdh1fb" path="res://sounds/player/footsteps/stepwater_1.wav" id="27_g6n0e"]
+[ext_resource type="AudioStream" uid="uid://cyt2u63u0abht" path="res://sounds/player/footsteps/stepgrass_1.ogg" id="28_080u6"]
+[ext_resource type="AudioStream" uid="uid://c4dl68uw2q854" path="res://sounds/player/footsteps/stepwater_2.wav" id="28_ajv2u"]
+[ext_resource type="AudioStream" uid="uid://d3ckpll7873tw" path="res://sounds/player/footsteps/stepwood_1.wav" id="28_hsi06"]
+[ext_resource type="AudioStream" uid="uid://cx28bbwtq6j2t" path="res://sounds/player/footsteps/stepgrass_2.ogg" id="29_b3kfm"]
+[ext_resource type="AudioStream" uid="uid://lvsbxr35v2n6" path="res://sounds/player/footsteps/stepwood_2.wav" id="29_cmo3d"]
+[ext_resource type="AudioStream" uid="uid://cmq7flpals8f" path="res://sounds/player/footsteps/stepgrass_3.ogg" id="30_80loc"]
+[ext_resource type="AudioStream" uid="uid://bmh3xb5o2ceef" path="res://sounds/player/footsteps/stepgrass_4.ogg" id="31_s5fnd"]
+[ext_resource type="AudioStream" uid="uid://dkl1a2gs73kb5" path="res://sounds/player/footsteps/stepgrass_5.ogg" id="32_ic00g"]
+[ext_resource type="AudioStream" uid="uid://iosvp4omrin5" path="res://sounds/player/footsteps/stepgrass_6.ogg" id="33_4185u"]
+[ext_resource type="AudioStream" uid="uid://iwr0lrbg826u" path="res://sounds/player/footsteps/stepgrass_7.ogg" id="34_wqhdn"]
+[ext_resource type="AudioStream" uid="uid://1ytvclcv23jn" path="res://sounds/player/footsteps/stepgrass_8.ogg" id="35_vbb5p"]
+[ext_resource type="AudioStream" uid="uid://cgjynd6kxiyhc" path="res://sounds/player/footsteps/stepgrass_9.ogg" id="36_q5nfd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5q4gb"]
 radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_px3uo"]
+radius = 0.4
+height = 1.0
 
 [sub_resource type="Resource" id="Resource_7mg3l"]
 script = ExtResource("5_0noxr")
@@ -28,22 +64,71 @@ volume = -8.0
 pitch = 1.0
 streams = Array[AudioStream]([ExtResource("6_mnyf7")])
 
-[sub_resource type="Resource" id="Resource_7qg7o"]
+[sub_resource type="Resource" id="Resource_8o2hm"]
 script = ExtResource("5_0noxr")
-name = "land"
+name = "stepdirt"
 bus = ""
-volume = -8.0
+volume = -12.2
 pitch = 1.0
-streams = Array[AudioStream]([ExtResource("7_l8ijv")])
+streams = Array[AudioStream]([ExtResource("9_ptm0h"), ExtResource("10_n843i"), ExtResource("11_mfoch"), ExtResource("12_yp0td"), ExtResource("13_3unnm"), ExtResource("14_angks"), ExtResource("15_6k3ux"), ExtResource("16_nhrly")])
+
+[sub_resource type="Resource" id="Resource_mkilk"]
+script = ExtResource("5_0noxr")
+name = "stepsnow"
+bus = ""
+volume = -12.2
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("17_ecfib"), ExtResource("18_3wqqk")])
+
+[sub_resource type="Resource" id="Resource_g8x7n"]
+script = ExtResource("5_0noxr")
+name = "stepstone"
+bus = ""
+volume = -12.2
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("19_cdphg"), ExtResource("20_qgny0"), ExtResource("21_64qhb"), ExtResource("22_4ksfo"), ExtResource("23_iah2f"), ExtResource("24_s2h0g"), ExtResource("25_cnq1g"), ExtResource("26_2nieb")])
+
+[sub_resource type="Resource" id="Resource_jl7k2"]
+script = ExtResource("5_0noxr")
+name = "stepwater"
+bus = ""
+volume = -12.2
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("27_g6n0e"), ExtResource("28_ajv2u")])
+
+[sub_resource type="Resource" id="Resource_e5je6"]
+script = ExtResource("5_0noxr")
+name = "stepwood"
+bus = ""
+volume = -12.2
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("28_hsi06"), ExtResource("29_cmo3d")])
+
+[sub_resource type="Resource" id="Resource_qsywa"]
+script = ExtResource("5_0noxr")
+name = "stepgrass"
+bus = ""
+volume = -12.2
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("28_080u6"), ExtResource("29_b3kfm"), ExtResource("30_80loc"), ExtResource("31_s5fnd"), ExtResource("32_ic00g"), ExtResource("33_4185u"), ExtResource("34_wqhdn"), ExtResource("35_vbb5p"), ExtResource("36_q5nfd")])
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 21
 script = ExtResource("1_dpj2d")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="MainHitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_5q4gb")
+
+[node name="SlideHitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_px3uo")
+disabled = true
+
+[node name="GroundRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+hit_from_inside = true
 
 [node name="WorldModel" parent="." instance=ExtResource("2_o5pnn")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
@@ -180,7 +265,7 @@ fov = 90.0
 [node name="SoundBank" type="Node" parent="."]
 script = ExtResource("4_f6syw")
 label = "player"
-events = Array[ExtResource("5_0noxr")]([SubResource("Resource_7mg3l"), SubResource("Resource_7qg7o")])
+events = Array[ExtResource("5_0noxr")]([SubResource("Resource_7mg3l"), SubResource("Resource_8o2hm"), SubResource("Resource_mkilk"), SubResource("Resource_g8x7n"), SubResource("Resource_jl7k2"), SubResource("Resource_e5je6"), SubResource("Resource_qsywa")])
 
 [node name="HUD" parent="." instance=ExtResource("8_6ckix")]
 
@@ -208,11 +293,16 @@ script = ExtResource("14_gtayp")
 script = ExtResource("16_y4b88")
 
 [node name="Slide" type="Node" parent="StateMachine"]
-script = ExtResource("11_cdtuv")
+script = ExtResource("17_aev0o")
 
 [node name="KickCooldown" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
+
+[node name="StepTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
 
 [connection signal="state_changed" from="StateMachine" to="." method="_on_state_machine_state_changed"]
 

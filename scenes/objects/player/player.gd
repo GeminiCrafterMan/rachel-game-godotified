@@ -4,9 +4,12 @@ extends CharacterBody3D
 @onready var state_machine: StateMachine = $StateMachine
 
 # Variables
+var health = 100
 
 # Constants
 const MOUSE_SENSITIVITY = 0.002
+
+# Signals
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -32,3 +35,9 @@ func _physics_process(delta: float) -> void:
 func _on_state_machine_state_changed(_previous_state: String, new_state: String) -> void:
 	$HUD/StateTracker.text = "State: " + new_state
 	pass
+	
+func damage(amount):
+	health -= amount
+	
+	if health < 0:
+		get_tree().reload_current_scene() # Reset when out of health

@@ -1,6 +1,8 @@
 extends "common_state.gd"
 
 func _enter_state(_previous_state: String) -> void:
+	if SoundManager.has_loaded: # Wait for the sound manager to load first!
+		_footstep()
 	anim.play(&"Idle")
 
 func _physics_process_state(_delta: float) -> String:
@@ -8,13 +10,13 @@ func _physics_process_state(_delta: float) -> String:
 	if player.is_on_floor():
 		# Play landing sound
 		if justLanded == true:
-			if SoundManager.has_loaded: # Wait for the sound manager to load first!
-				SoundManager.play("player", "land")
 			justLanded = false
 			return ""
 		else:
 			if Input.is_action_just_pressed(&"jump"):
 				return "Jump"
+			if Input.is_action_pressed(&"slide") or GameState.player_force_slide == true:
+				return "Slide"
 			# Accelerate
 			if GameState.player_direction:
 				return "Walk"

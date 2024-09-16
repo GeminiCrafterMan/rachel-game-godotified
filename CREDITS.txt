@@ -1,2 +1,10 @@
-Boot icon: Lorc (OpenGameArt)
-tek2.ogg music: Poly (tf2master761)
+Lorc (OpenGameArt):
+* Boot icon (HUD)
+musdasch (OpenGameArt):
+* Bullet hole decal
+congusbongus (OpenGameArt):
+* Footstep sounds
+Jute, submitted by qubodup (OpenGameArt):
+* Footstep sounds
+Poly (tf2master761):
+* Music: tek2.ogg & Lounge_Reality.ogg
