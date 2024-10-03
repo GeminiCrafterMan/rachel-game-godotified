@@ -4,10 +4,12 @@ class_name Weapon
 
 # Signals
 signal lowered
+var lowering := false
 signal raised
+var raising := false
 
 # Variables
-var fireable = true
+var fireable := true
 
 # References
 @onready var anim = $Model/AnimationPlayer
@@ -17,8 +19,9 @@ var fireable = true
 func select_weapon() -> void:
 	fireable = false
 	anim.play_backwards("Lower")
+	raising = true
 	await anim.animation_finished
-	print("switched")
+	raising = false
 	emit_signal("raised")
 	anim.play("Idle")
 	fireable = true
@@ -26,7 +29,9 @@ func select_weapon() -> void:
 func deselect_weapon() -> void:
 	fireable = false
 	anim.play("Lower")
+	lowering = true
 	await anim.animation_finished
+	lowering = false
 	emit_signal("lowered")
 
 ## Fires a hitscan attack where [code]raycast[/code] is pointing.

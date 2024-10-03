@@ -10,18 +10,18 @@ var weapon_index := 0
 func _ready() -> void:
 	weapon = weapons[weapon_index] # Weapon must never be nil
 
-func _unhandled_input(event: InputEvent) -> void:
+func _process(delta: float) -> void:
+	if weapons[old_weapon_index].lowering: return
+	
 	if Input.is_action_just_pressed("switch_previous"):
 		old_weapon_index = weapon_index
 		weapon_index = wrap(weapon_index - 1, 0, weapons.size())
 		initiate_change_weapon(weapon_index, old_weapon_index)
-		old_weapon_index = weapon_index
 
 	if Input.is_action_just_pressed("switch_next"):
 		old_weapon_index = weapon_index
 		weapon_index = wrap(weapon_index + 1, 0, weapons.size())
 		initiate_change_weapon(weapon_index, old_weapon_index)
-		old_weapon_index = weapon_index
 
 func initiate_change_weapon(index, old_index) -> void:
 	weapons[old_index].deselect_weapon()
