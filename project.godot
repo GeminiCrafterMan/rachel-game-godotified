@@ -30,10 +30,12 @@ SoundManager="*res://addons/resonate/sound_manager/sound_manager.gd"
 MusicManager="*res://addons/resonate/music_manager/music_manager.gd"
 Debug="*res://autoload/debug.gd"
 GameState="*res://autoload/game_state.gd"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+SettingsDataManager="*res://addons/modular-settings-menu/singletons/settings_data_manager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/boujie_water_shader/plugin.cfg", "res://addons/goshapes/plugin.cfg", "res://addons/gridmap-plus/plugin.cfg", "res://addons/resonate/plugin.cfg", "res://addons/state_machine_nodes/plugin.cfg")
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/goshapes/plugin.cfg", "res://addons/gridmap-plus/plugin.cfg", "res://addons/modular-settings-menu/plugin.cfg", "res://addons/resonate/plugin.cfg", "res://addons/state_machine_nodes/plugin.cfg")
 
 [input]
 
@@ -115,16 +117,15 @@ switch_previous={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":9,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
-slide={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
-]
-}
 kick={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+]
+}
+limbo_console_toggle={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":96,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 
@@ -143,7 +144,13 @@ kick={
 3d_physics/layer_4="Items"
 3d_physics/layer_5="Friends"
 
+[maaacks_menus_template]
+
+disable_plugin_dialogues=true
+copy_path="res://scenes/menus"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 textures/canvas_textures/default_texture_repeat=1
+textures/vram_compression/import_etc2_astc=true

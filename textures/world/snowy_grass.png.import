@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dc486wf47ysth"
 path.s3tc="res://.godot/imported/snowy_grass.png-7d29b8a675314f6b7e5390d7c72b3e68.s3tc.ctex"
+path.etc2="res://.godot/imported/snowy_grass.png-7d29b8a675314f6b7e5390d7c72b3e68.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/world/snowy_grass.png"
-dest_files=["res://.godot/imported/snowy_grass.png-7d29b8a675314f6b7e5390d7c72b3e68.s3tc.ctex"]
+dest_files=["res://.godot/imported/snowy_grass.png-7d29b8a675314f6b7e5390d7c72b3e68.s3tc.ctex", "res://.godot/imported/snowy_grass.png-7d29b8a675314f6b7e5390d7c72b3e68.etc2.ctex"]
 
 [params]
 

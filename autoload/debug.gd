@@ -7,6 +7,9 @@ func _unhandled_input(event):
 					GameState.hud_visible = false
 				else:
 					GameState.hud_visible = true
+			#KEY_F2:
+			# F3 is already used by the debug plugin I downloaded
+			#KEY_F4:
 			KEY_F5: # Reload current scene
 				get_tree().reload_current_scene()
 			KEY_F6: # Mute/unmute music
@@ -14,12 +17,10 @@ func _unhandled_input(event):
 					MusicManager.set_volume(-80)
 				else:
 					MusicManager.set_volume(0)
+			#KEY_F7:
 			# F8 is used to close the game by default, so it won't be defined here
-			KEY_F9: # Force slide on/off
-				if GameState.player_force_slide:
-					GameState.player_force_slide = false
-				else:
-					GameState.player_force_slide = true
+			#KEY_F9:
+			#KEY_F10:
 			KEY_F11: # Fullscreen/windowed
 				match DisplayServer.window_get_mode():
 					DisplayServer.WINDOW_MODE_WINDOWED:
@@ -28,4 +29,4 @@ func _unhandled_input(event):
 						DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 					_:
 						DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-						
+			#KEY_F12:

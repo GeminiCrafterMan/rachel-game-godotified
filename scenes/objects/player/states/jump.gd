@@ -1,10 +1,13 @@
 extends "common_state.gd"
 
 func _enter_state(_previous_state: String) -> void:
-	anim.play(&"Jump")
 	if Input.is_action_just_pressed("jump"):
 		SoundManager.play("player", "jump")
 		player.velocity.y = JUMP_VELOCITY
+	anim.speed_scale = 1
+	anim.play(&"Jump-Transition")
+	await anim.animation_finished
+	anim.play(&"Jump")
 
 func _physics_process_state(_delta: float) -> String:
 	if GameState.player_direction.x:
@@ -18,9 +21,6 @@ func _physics_process_state(_delta: float) -> String:
 		var minimum: float = 0
 		if Input.is_action_just_released(&"jump") and player.velocity.y > minimum:
 			player.velocity.y = lerpf(player.velocity.y, minimum, _delta*30)
-		
-		if player.velocity.y <= 1.0:
-			anim.play(&"Fall Transition")
 		
 		if player.velocity.y <= 0.0:
 			return "Fall"

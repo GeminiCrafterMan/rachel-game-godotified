@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cllysbl6bysd2"
 path.s3tc="res://.godot/imported/smooth_stone_slab.png-51b4a71882d17d772163a0292415f843.s3tc.ctex"
+path.etc2="res://.godot/imported/smooth_stone_slab.png-51b4a71882d17d772163a0292415f843.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/world/smooth_stone_slab.png"
-dest_files=["res://.godot/imported/smooth_stone_slab.png-51b4a71882d17d772163a0292415f843.s3tc.ctex"]
+dest_files=["res://.godot/imported/smooth_stone_slab.png-51b4a71882d17d772163a0292415f843.s3tc.ctex", "res://.godot/imported/smooth_stone_slab.png-51b4a71882d17d772163a0292415f843.etc2.ctex"]
 
 [params]
 

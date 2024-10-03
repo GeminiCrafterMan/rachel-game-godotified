@@ -3,13 +3,14 @@ extends "common_state.gd"
 var slide_direction
 
 func _enter_state(_previous_state: String) -> void:
-#	anim.play(&"Slide")
+	anim.play(&"Slide")
 	player.get_node("MainHitbox").disabled = true
 	player.get_node("SlideHitbox").disabled = false
 	if GameState.player_direction:
 		slide_direction = GameState.player_direction
 	else:
 		slide_direction = -player.get_transform().basis.z
+	anim.speed_scale = 1
 
 func _physics_process_state(_delta: float) -> String:
 	# Handle jump.

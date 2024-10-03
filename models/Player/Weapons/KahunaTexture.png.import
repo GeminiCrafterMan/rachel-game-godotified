@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwpt6y5dpdtpc"
 path.s3tc="res://.godot/imported/KahunaTexture.png-782342f4df4bd2a4bd2e645c36ee386e.s3tc.ctex"
+path.etc2="res://.godot/imported/KahunaTexture.png-782342f4df4bd2a4bd2e645c36ee386e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/Player/Weapons/KahunaTexture.png"
-dest_files=["res://.godot/imported/KahunaTexture.png-782342f4df4bd2a4bd2e645c36ee386e.s3tc.ctex"]
+dest_files=["res://.godot/imported/KahunaTexture.png-782342f4df4bd2a4bd2e645c36ee386e.s3tc.ctex", "res://.godot/imported/KahunaTexture.png-782342f4df4bd2a4bd2e645c36ee386e.etc2.ctex"]
 
 [params]
 

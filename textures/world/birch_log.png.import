@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8ivfab16uaec"
 path.s3tc="res://.godot/imported/birch_log.png-8cda6c8c55ebb1f4f5bae5effbad23c6.s3tc.ctex"
+path.etc2="res://.godot/imported/birch_log.png-8cda6c8c55ebb1f4f5bae5effbad23c6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/world/birch_log.png"
-dest_files=["res://.godot/imported/birch_log.png-8cda6c8c55ebb1f4f5bae5effbad23c6.s3tc.ctex"]
+dest_files=["res://.godot/imported/birch_log.png-8cda6c8c55ebb1f4f5bae5effbad23c6.s3tc.ctex", "res://.godot/imported/birch_log.png-8cda6c8c55ebb1f4f5bae5effbad23c6.etc2.ctex"]
 
 [params]
 

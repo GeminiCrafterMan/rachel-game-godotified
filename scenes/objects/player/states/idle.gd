@@ -4,6 +4,7 @@ func _enter_state(_previous_state: String) -> void:
 	if SoundManager.has_loaded: # Wait for the sound manager to load first!
 		_footstep()
 	anim.play(&"Idle")
+	anim.speed_scale = 1
 
 func _physics_process_state(_delta: float) -> String:
 	# Handle jump.
@@ -15,8 +16,6 @@ func _physics_process_state(_delta: float) -> String:
 		else:
 			if Input.is_action_just_pressed(&"jump"):
 				return "Jump"
-			if Input.is_action_pressed(&"slide") or GameState.player_force_slide == true:
-				return "Slide"
 			# Accelerate
 			if GameState.player_direction:
 				return "Walk"

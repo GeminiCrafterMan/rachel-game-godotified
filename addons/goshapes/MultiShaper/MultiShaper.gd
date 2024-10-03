@@ -40,19 +40,19 @@ func _update():
 	emit_changed()
 	
 
-func get_builder() -> ShapeBuilder:
-	return MultiShapeBuilder.new(self)
+func create_builders() -> Array[ShapeBuilder]:
+	var result: Array[ShapeBuilder] = []
+	for shaper in shapers:
+		if shaper != null and shaper.enabled:
+			result += shaper.create_builders()
+	return result
 	
-
-class MultiShapeBuilder extends ShapeBuilder:
 	
-	var style: MultiShaper
-	func _init(_style: MultiShaper):
-		style = _style
-		
-	func build(_host: Node3D, _path: PathData) -> void:
-		host = _host
-		path = _path
-		for shaper in style.shapers:
-			if shaper != null and shaper.enabled:
-				shaper.get_builder().build(host, path)
+func get_build_jobs(data: GoshapeBuildData) -> Array[GoshapeJob]:
+	var local_data = data.duplicate()
+	local_data.owner = self
+	var result: Array[GoshapeJob] = []
+	for shaper in shapers:
+		if shaper != null and shaper.enabled:
+			result += shaper.get_build_jobs(local_data)
+	return result

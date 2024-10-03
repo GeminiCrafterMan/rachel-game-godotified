@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c04yl04mnawqc"
 path.s3tc="res://.godot/imported/StarTexture.png-be4f3c924a192c2fa9f7078025de772f.s3tc.ctex"
+path.etc2="res://.godot/imported/StarTexture.png-be4f3c924a192c2fa9f7078025de772f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/Player/Weapons/StarTexture.png"
-dest_files=["res://.godot/imported/StarTexture.png-be4f3c924a192c2fa9f7078025de772f.s3tc.ctex"]
+dest_files=["res://.godot/imported/StarTexture.png-be4f3c924a192c2fa9f7078025de772f.s3tc.ctex", "res://.godot/imported/StarTexture.png-be4f3c924a192c2fa9f7078025de772f.etc2.ctex"]
 
 [params]
 

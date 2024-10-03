@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2hqnjxmkmme2"
 path.s3tc="res://.godot/imported/spruce_planks.png-ef1ade51f1e6d9bc96402bbadf205002.s3tc.ctex"
+path.etc2="res://.godot/imported/spruce_planks.png-ef1ade51f1e6d9bc96402bbadf205002.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/world/spruce_planks.png"
-dest_files=["res://.godot/imported/spruce_planks.png-ef1ade51f1e6d9bc96402bbadf205002.s3tc.ctex"]
+dest_files=["res://.godot/imported/spruce_planks.png-ef1ade51f1e6d9bc96402bbadf205002.s3tc.ctex", "res://.godot/imported/spruce_planks.png-ef1ade51f1e6d9bc96402bbadf205002.etc2.ctex"]
 
 [params]
 

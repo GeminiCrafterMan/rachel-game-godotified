@@ -6,5 +6,9 @@ congusbongus (OpenGameArt):
 * Footstep sounds
 Jute, submitted by qubodup (OpenGameArt):
 * Footstep sounds
+Kenney (kenney.nl):
+* Original hitscan attack code, modified to become modular
+Sellpet (Sketchfab):
+* Training dummy model
 Poly (tf2master761):
 * Music: tek2.ogg & Lounge_Reality.ogg

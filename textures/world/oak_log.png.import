@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://lcyo1wjj874g"
 path.s3tc="res://.godot/imported/oak_log.png-74e288befe4339f400122935374df6c9.s3tc.ctex"
+path.etc2="res://.godot/imported/oak_log.png-74e288befe4339f400122935374df6c9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/world/oak_log.png"
-dest_files=["res://.godot/imported/oak_log.png-74e288befe4339f400122935374df6c9.s3tc.ctex"]
+dest_files=["res://.godot/imported/oak_log.png-74e288befe4339f400122935374df6c9.s3tc.ctex", "res://.godot/imported/oak_log.png-74e288befe4339f400122935374df6c9.etc2.ctex"]
 
 [params]
 

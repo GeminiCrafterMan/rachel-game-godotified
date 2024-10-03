@@ -6,6 +6,8 @@ extends Path3D
 const AXIS_X = 1
 const AXIS_Y = 2
 const AXIS_Z = 4
+const BLOCKING = false
+
 
 ## Invert the direction of the path
 @export var inverted = false:
@@ -13,27 +15,19 @@ const AXIS_Z = 4
 		inverted = value
 		mark_dirty()
 	
-
 ## A toggle that moves the origin of the path to the center
 @export var recenter = false:
 	set(value):
 		if value:
 			recenter_points()
-			
-
-## An editing option that causes aligned points to move together
-@export var axis_matched_editing = false
 	
-
 ## The PathOptions Resource that contains the options for this shape
 @export var path_options: PathOptions:
 	set = set_path_options
-	
 
 ## The Shaper Resource that configures how to build this Goshape
 @export var shaper: Shaper:
 	set = set_shaper
-	
 	
 ## Cause path twists to build along the path (useful for loop-de-loops) 
 @export var cascade_twists = false:
@@ -41,22 +35,20 @@ const AXIS_Z = 4
 		cascade_twists = value
 		mark_dirty()
 		
-
 ## An array of twists to apply to each point in the path
 @export var path_twists : Array[int]:
 	set = set_path_twists
 	
-
-var is_line: bool: get = get_is_line
 var is_editing: bool: get = _get_is_editing
 
-var is_dirty = false
+var is_dirty := false
 var edit_proxy = null
-var cap_data: PathData = null
+var cap_data: GoshapePath = null
 var watcher_shaper := ResourceWatcher.new(mark_dirty)
 var watcher_pathmod := ResourceWatcher.new(mark_dirty)
 var axis_match_index = -1
 var axis_match_points := PackedInt32Array()
+var last_curve_points := PackedVector3Array()
 
 
 func _ready() -> void:
@@ -84,28 +76,42 @@ func _edit_begin(edit_proxy) -> void:
 	if _get_is_editing():
 		return
 	self.edit_proxy = edit_proxy
+	_edit_update()
+		
+	if not curve_changed.is_connected(on_curve_changed):
+		curve_changed.connect(on_curve_changed)
+	watcher_shaper.watch(shaper)
+	watcher_pathmod.watch(path_options)
+	
+	
+func _edit_update() -> void:
+	if not Engine.is_editor_hint():
+		return
 	set_display_folded(true)
 	if not is_instance_of(shaper, Shaper):
 		set_shaper(edit_proxy.create_shaper())
 	if not is_instance_of(path_options, PathOptions):
 		set_path_options(edit_proxy.create_path_options())
-	if not is_instance_of(curve, Curve3D) or curve.get_point_count() < 2:
-		_init_curve()
 	if not curve is GoCurve3D:
 		curve.set_script(GoCurve3D.new().get_script())
-	
+	if not is_instance_of(curve, Curve3D) or curve.get_point_count() < 2:
+		_init_curve()
 	curve = ResourceUtils.make_local(self, curve)
 	shaper = ResourceUtils.make_local(self, shaper)
 	path_options = ResourceUtils.make_local(self, path_options)
-		
-	curve_changed.connect(on_curve_changed)
-	watcher_shaper.watch(shaper)
-	watcher_pathmod.watch(path_options)
+	
+	
+func _edit_end() -> void:
+	self.edit_proxy = null
+	watcher_shaper.unwatch()
+	watcher_pathmod.unwatch()
+	if curve_changed.is_connected(on_curve_changed):
+		curve_changed.disconnect(on_curve_changed)
 	
 	
 func _init_curve() -> void:
-	if not curve is Curve3D:
-		curve = Curve3D.new()
+	if curve == null:
+		curve = GoCurve3D.new()
 	curve.clear_points()
 	if path_options.line > 0.0:
 		var extent = path_options.line * 0.5
@@ -119,17 +125,10 @@ func _init_curve() -> void:
 		curve.add_point(Vector3(-extent, 0, -extent))
 	
 	
-func _edit_end() -> void:
-	self.edit_proxy = null
-	watcher_shaper.unwatch()
-	watcher_pathmod.unwatch()
-	curve_changed.disconnect(on_curve_changed)
-	
-	
 func set_shaper(value: Shaper) -> void:
 	shaper = value
-	watcher_shaper.watch(shaper)
 	mark_dirty()
+	watcher_shaper.watch(shaper)
 	
 	
 func set_path_options(value: PathOptions) -> void:
@@ -148,15 +147,39 @@ func recenter_points():
 func on_curve_changed():
 	if not _get_is_editing():
 		return
+		
 	if is_dirty:
 		return
-	is_dirty = true
+		
+	if edit_proxy.use_y_lock:
+		for i in curve.point_count:
+			var p = curve.get_point_position(i)
+			if last_curve_points[i].y != p.y:
+				p.y = last_curve_points[i].y
+				curve.set_point_position(i, p)
 	
+	# manual curve change detection
+	var has_change = false
+	if last_curve_points.size() != curve.point_count:
+		last_curve_points.resize(curve.point_count)
+		has_change = true
+	else:
+		for i in curve.point_count:
+			if last_curve_points[i] != curve.get_point_position(i):
+				has_change = true
+				break
+	for i in curve.point_count:
+		last_curve_points.set(i, curve.get_point_position(i))
+		
+	if not has_change:
+		return
+
+	is_dirty = true
 	curve.updating = true
 	
-	if axis_matched_editing:
-		var edited_point = curve.edited_point
-		var edited_pos = curve.get_point_position(edited_point)
+	if edit_proxy.use_axis_matching:
+		var edited_point: int = curve.edited_point
+		var edited_pos := curve.get_point_position(edited_point)
 		if edited_point != axis_match_index:
 			axis_match_index = edited_point
 			axis_match_points = PackedInt32Array()
@@ -197,18 +220,19 @@ func on_curve_changed():
 	mark_dirty()
 
 	
-func mark_dirty():
+func mark_dirty() -> void:
 	if not _get_is_editing():
+		is_dirty = false
 		return
 	is_dirty = true
-	call_deferred("_update")
+
+
+func _process(delta: float) -> void:
+	if is_dirty:
+		_update()
+		
 	
-	
-func get_is_line():
-	return path_options.line > 0.0
-	
-	
-func _update():
+func _update() -> void:	
 	if not _get_is_editing():
 		return
 	if not get_tree():
@@ -222,69 +246,85 @@ func _update():
 		axis_match_index = -1
 		axis_match_points = PackedInt32Array()
 	
+	var runner = edit_proxy.runner
+	if BLOCKING and runner.is_busy:
+		mark_dirty()
+		return
+	
 	build()
-	is_dirty = false
 	
 	
 func build() -> void:
 	if not shaper:
-		print("no shaper")
-		return
+		return	
 	
 	var runner = edit_proxy.runner
-	if runner.is_busy:
+	if BLOCKING and runner.is_busy:
 		mark_dirty()
 		return
 		
-	_build(runner)
-		
-
-func _build(runner: JobRunner) -> void:
 	if not shaper:
 		return
-	for child in get_children():
-		child.free()
-	run_build_jobs(runner)
+		
+	build_run(runner)
 	is_dirty = false
 	
 	
-func run_build_jobs(runner: JobRunner) -> void:
-	shaper.build(self, get_path_data(path_options.interpolate))
+func _build(runner: GoshapeRunner) -> void:
+	build_run(runner, true)
 	
-		
+	
+func build_clear(runner: GoshapeRunner) -> void:	
+	runner.cancel(self)
+	for child in get_children():
+		child.free()
+	
+	
+func build_run(runner: GoshapeRunner, rebuild := false) -> void:
+	build_clear(runner)
+	var data = GoshapeBuildData.new()
+	data.parent = self
+	data.path = get_path_data(path_options.interpolate)
+	data.rebuild = rebuild
+	var jobs = shaper.get_build_jobs(data)
+	for job in jobs:
+		runner.enqueue(job)
+	runner.run()
+	
+	
 func remove_control_points() -> void:
 	PathUtils.remove_control_points(curve)
 	mark_dirty()
 	
-
-func get_path_data(interpolate: int) -> PathData:
-	var twists = _get_twists()
-	if twists.size() < 1:
-		twists = null
-	var path_data = PathUtils.curve_to_path(curve, interpolate, inverted, twists)
+	
+func get_path_data(interpolate: int = -1) -> GoshapePath:
+	if interpolate < 0:
+		interpolate = path_options.interpolate
+	var twists := _get_twists()
+	var path_data := PathUtils.curve_to_path(curve, interpolate, inverted, twists)
 	if path_options.line != 0:
 		path_data = PathUtils.path_to_outline(path_data, path_options.line)
 	if path_options.rounding > 0:
-		path_data = PathUtils.round_path(path_data, path_options.rounding, interpolate)
+		path_data = PathUtils.round_path(path_data, path_options.rounding_mode, path_options.rounding, interpolate)
 	path_data.curve = curve.duplicate()
 	if path_options.ground_placement_mask:
 		path_data.placement_mask = path_options.ground_placement_mask
 	
 	for i in range(path_data.point_count):
-		var p = path_data.get_point(i)
+		var p := path_data.get_point(i)
 		if path_options.points_on_ground:
-			var space = get_world_3d().direct_space_state
-			var ray = PhysicsRayQueryParameters3D.new()
+			var space := get_world_3d().direct_space_state
+			var ray := PhysicsRayQueryParameters3D.new()
 			ray.from = global_transform * Vector3(p.x, 1000, p.z)
 			ray.to = global_transform * Vector3(p.x, -1000, p.z)
 			if path_options.ground_placement_mask:
 				ray.collision_mask = path_options.ground_placement_mask
-			var hit = space.intersect_ray(ray)
+			var hit := space.intersect_ray(ray)
 			if hit.has("position"):
 				p = global_transform.inverse() * hit.position
 		if path_options.offset_y:
 			p.y += path_options.offset_y
-		path_data.points[i] = p
+		path_data.points.set(i, p)
 	return path_data
 
 

@@ -1,6 +1,9 @@
 extends "jump.gd"
 
 func _enter_state(_previous_state: String) -> void:
+	anim.speed_scale = 1
+	anim.play(&"Fall-Transition")
+	await anim.animation_finished
 	anim.play(&"Fall")
 
 func _physics_process_state(delta: float) -> String:

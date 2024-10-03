@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6q52fo7dtilb"]
+[gd_scene load_steps=7 format=3 uid="uid://c6q52fo7dtilb"]
 
+[ext_resource type="Script" path="res://scenes/objects/player/weapons/evening_star.gd" id="1_ay87l"]
 [ext_resource type="PackedScene" uid="uid://bxyltcs7o821e" path="res://models/Player/Weapons/Evening Star.blend" id="1_mc05j"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="3_mcshs"]
+[ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="4_nml8x"]
+[ext_resource type="AudioStream" uid="uid://dhp1rycy4hblv" path="res://sounds/player/weapons/Evening Star/fire.wav" id="5_4pwyt"]
+
+[sub_resource type="Resource" id="Resource_dq3u5"]
+script = ExtResource("4_nml8x")
+name = "fire"
+bus = ""
+volume = -8.0
+pitch = 1.0
+streams = Array[AudioStream]([ExtResource("5_4pwyt")])
 
 [node name="Evening Star" type="Node3D"]
+script = ExtResource("1_ay87l")
 
 [node name="Model" parent="." instance=ExtResource("1_mc05j")]
 
@@ -77,5 +90,11 @@ layers = 64
 
 [node name="AnimationPlayer" parent="Model" index="1"]
 autoplay = "Idle"
+
+[node name="SoundBank" type="Node" parent="."]
+script = ExtResource("3_mcshs")
+label = "evening_star"
+bus = "Sound"
+events = Array[ExtResource("4_nml8x")]([SubResource("Resource_dq3u5")])
 
 [editable path="Model"]

@@ -29,23 +29,23 @@ func _footstep() -> void:
 	# If there's a way to do this with a match, I'd love to hear it.
 		if other.is_in_group("dirt"):
 			SoundManager.play("player", "stepdirt")
-			print("dirt")
+#			print("dirt")
 		elif other.is_in_group("snow"):
 			SoundManager.play("player", "stepsnow")
-			print("snow")
+#			print("snow")
 		elif other.is_in_group("stone"):
 			SoundManager.play("player", "stepstone")
-			print("stone")
+#			print("stone")
 		elif other.is_in_group("water"):
 			SoundManager.play("player", "stepwater")
-			print("water")
+#			print("water")
 		elif other.is_in_group("wood"):
 			SoundManager.play("player", "stepwood")
-			print("wood")
+#			print("wood")
 		elif other.is_in_group("grass"):
 			SoundManager.play("player", "stepgrass")
-			print("grass")
+#			print("grass")
 		else:
 			SoundManager.play("player", "stepstone")
-			print("none")
+#			print("none")
 		stepTimer.start()

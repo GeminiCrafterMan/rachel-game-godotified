@@ -2,6 +2,7 @@ extends "common_state.gd"
 
 func _enter_state(_previous_state: String) -> void:
 	anim.play(&"Walk")
+	anim.speed_scale = 2
 
 func _physics_process_state(_delta: float) -> String:
 	# Handle jump.
@@ -14,8 +15,6 @@ func _physics_process_state(_delta: float) -> String:
 		else:
 			if Input.is_action_just_pressed(&"jump"):
 				return "Jump"
-			if Input.is_action_pressed(&"slide") or GameState.player_force_slide == true:
-				return "Slide"
 			# Accelerate
 			if GameState.player_direction:
 				player.velocity.x = lerpf(player.velocity.x, GameState.player_direction.x * SPEED, _delta * ACCELERATION)
