@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw5db61ywuftn"]
+[gd_scene load_steps=6 format=3 uid="uid://cw5db61ywuftn"]
 
 [ext_resource type="Script" path="res://scenes/ui/hud.gd" id="1_ew2cb"]
+[ext_resource type="Texture2D" uid="uid://bqpgmobngsq6p" path="res://textures/ui/crosshair038.png" id="3_k7pnk"]
 [ext_resource type="Texture2D" uid="uid://bnc2sdgprmw6h" path="res://textures/ui/kickCooldown.png" id="3_yylcp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojxfc"]
@@ -9,6 +10,8 @@ corner_radius_top_left = 7
 corner_radius_top_right = 7
 corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8arqe"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_ew2cb")
@@ -48,3 +51,20 @@ offset_top = 8.0
 offset_right = 192.0
 offset_bottom = 48.0
 text = "Idle"
+
+[node name="Crosshair" type="TextureRect" parent="."]
+material = SubResource("CanvasItemMaterial_8arqe")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(72, 72)
+texture = ExtResource("3_k7pnk")

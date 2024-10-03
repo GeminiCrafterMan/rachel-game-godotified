@@ -9,16 +9,19 @@ signal raised
 var raising := false
 
 # Variables
-var fireable := true
+var fireable := false
 
 # References
 @onready var anim = $Model/AnimationPlayer
 @onready var raycast = get_parent().get_parent().get_parent().get_parent().get_node("GunRay")
 @onready var camera = get_parent().get_parent() # Go two layers up
 
+func _ready() -> void:
+	anim.play("Lower")
+
 func select_weapon() -> void:
 	fireable = false
-	anim.play_backwards("Lower")
+	anim.play("Raise")
 	raising = true
 	await anim.animation_finished
 	raising = false

@@ -19,6 +19,8 @@ func _hide_hud(delta: float) -> void:
 	if GameState.hud_visible == true:
 		$HealthBar.global_position.x = lerpf($HealthBar.global_position.x, 24, delta*6)
 		$KickCooldown.global_position.x = lerpf($KickCooldown.global_position.x, 112, delta*6)
+		$Crosshair.scale = $Crosshair.scale.lerp(Vector2.ONE/2, delta*6)
 	else:
 		$HealthBar.global_position.x = lerpf($HealthBar.global_position.x, -280, delta*6)
 		$KickCooldown.global_position.x = lerpf($KickCooldown.global_position.x, -192, delta*6)
+		$Crosshair.scale = $Crosshair.scale.lerp(Vector2.ZERO, delta*6)

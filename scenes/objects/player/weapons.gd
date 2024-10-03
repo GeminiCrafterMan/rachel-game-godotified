@@ -9,6 +9,7 @@ var weapon_index := 0
 
 func _ready() -> void:
 	weapon = weapons[weapon_index] # Weapon must never be nil
+	weapon.select_weapon()
 
 func _process(delta: float) -> void:
 	if weapons[old_weapon_index].lowering: return
@@ -27,7 +28,7 @@ func initiate_change_weapon(index, old_index) -> void:
 	weapons[old_index].deselect_weapon()
 	await weapons[old_index].lowered
 	weapons[old_index].visible = false
-	weapons[old_index].set_process_mode(PROCESS_MODE_DISABLED)
+#	weapons[old_index].set_process_mode(PROCESS_MODE_DISABLED)
 	weapons[index].visible = true
-	weapons[index].set_process_mode(PROCESS_MODE_INHERIT)
+#	weapons[index].set_process_mode(PROCESS_MODE_INHERIT)
 	weapons[index].select_weapon()
