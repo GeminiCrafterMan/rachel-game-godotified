@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://l6jbnof3paxt"]
+
+[ext_resource type="Script" path="res://scenes/objects/player/weapons/projectiles/generic_projectile.gd" id="1_44uh2"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uma0r"]
+points = PackedVector3Array(0.0339848, -0.21242, -0.117703, 0.0187863, 0.053115, 0.23893, -0.0191237, 0.0531023, 0.238872, 0.0112087, 0.197431, -0.148199, -0.238906, -0.0530351, -0.0190504, 0.240091, 0.0457289, 0.0265017, 0.0340005, -0.18974, 0.155431, -0.0419266, 0.2279, 0.0871399, 0.0264639, -0.0456692, -0.240119, -0.154406, 0.127876, -0.146886, -0.216245, 0.0454593, 0.109717, 0.223061, -0.0529133, -0.0947268, -0.124603, -0.188503, 0.101612, -0.146851, -0.127891, -0.154414, 0.193306, -0.128958, 0.0870495, 0.148039, 0.189991, 0.0644224, 0.15421, 0.128005, -0.146981, 0.155381, 0.0454958, 0.18571, -0.0947576, -0.0529509, 0.223025, -0.155553, 0.189534, -0.0342563, 0.0724616, -0.237074, 0.00365206, -0.102686, -0.22018, -0.0418958, 0.0944483, -0.0529953, 0.223212, -0.0649091, 0.0456738, -0.232486, -0.147, 0.127974, 0.154233, -0.223142, 0.0528987, -0.094616, 0.049643, 0.237566, -0.0499355, 0.0340007, 0.189741, 0.155431, 0.154212, -0.128007, -0.146982, 0.0943454, 0.0529377, -0.223306, -0.201821, -0.121739, 0.0797229, 0.147963, -0.189894, -0.0646791)
+
+[sub_resource type="SphereMesh" id="SphereMesh_imptk"]
+radius = 0.25
+height = 0.5
+radial_segments = 16
+rings = 8
+
+[node name="GenericProjectile" type="Area3D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_44uh2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_uma0r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 128
+mesh = SubResource("SphereMesh_imptk")

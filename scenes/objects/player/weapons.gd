@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if weapons[old_weapon_index].lowering: return
+	if weapons[weapon_index].raising: return
 	
 	if Input.is_action_just_pressed("switch_previous"):
 		old_weapon_index = weapon_index

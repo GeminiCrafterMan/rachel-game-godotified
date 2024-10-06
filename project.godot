@@ -138,6 +138,7 @@ limbo_console_toggle={
 3d_render/layer_5="Friends"
 3d_render/layer_6="Enemy Projectiles + Effects"
 3d_render/layer_7="Player Viewmodel"
+3d_render/layer_8="Player Projectiles + Effects"
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Enemies"

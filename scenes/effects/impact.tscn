@@ -40,6 +40,7 @@ animations = [{
 }]
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D"]
+layers = 128
 cast_shadow = 0
 pixel_size = 0.0025
 billboard = 1

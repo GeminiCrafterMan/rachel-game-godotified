@@ -1,12 +1,13 @@
-[gd_scene load_steps=56 format=3 uid="uid://c14yqrr3v517m"]
+[gd_scene load_steps=57 format=3 uid="uid://c14yqrr3v517m"]
 
 [ext_resource type="Script" path="res://scenes/objects/player/player.gd" id="1_dpj2d"]
 [ext_resource type="PackedScene" uid="uid://cyg4hfkgim30i" path="res://models/Player/gemini0.blend" id="2_pkglg"]
-[ext_resource type="PackedScene" uid="uid://csg8tg2yc54a4" path="res://scenes/objects/player/weapons/kahuna/kahuna.tscn" id="3_22u2e"]
+[ext_resource type="PackedScene" uid="uid://csg8tg2yc54a4" path="res://scenes/objects/player/weapons/kahuna.tscn" id="3_22u2e"]
 [ext_resource type="Script" path="res://scenes/objects/player/weapons.gd" id="3_cpts5"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_bank.gd" id="4_f6syw"]
 [ext_resource type="PackedScene" uid="uid://c6q52fo7dtilb" path="res://scenes/objects/player/weapons/evening_star.tscn" id="4_m7ewg"]
 [ext_resource type="Script" path="res://addons/resonate/sound_manager/sound_event_resource.gd" id="5_0noxr"]
+[ext_resource type="PackedScene" uid="uid://cak7o82uav0nm" path="res://scenes/objects/player/weapons/projectile_gun.tscn" id="6_2vnxe"]
 [ext_resource type="AudioStream" uid="uid://brbspw6hc4hvn" path="res://sounds/player/jump.wav" id="6_mnyf7"]
 [ext_resource type="PackedScene" uid="uid://cw5db61ywuftn" path="res://scenes/ui/hud.tscn" id="8_6ckix"]
 [ext_resource type="AudioStream" uid="uid://uh5e2fcqfjqu" path="res://sounds/player/footsteps/stepdirt_1.wav" id="9_ptm0h"]
@@ -129,7 +130,8 @@ collision_mask = 7
 hit_from_inside = true
 
 [node name="WorldModel" parent="." instance=ExtResource("2_pkglg")]
-transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0, 0)
+visible = false
 
 [node name="Skeleton3D" parent="WorldModel/Gemini0" index="0"]
 bones/1/rotation = Quaternion(0.0951591, 1.18668e-07, 1.13438e-08, 0.995462)
@@ -244,12 +246,16 @@ fov = 90.0
 [node name="Weapons" type="Node3D" parent="Cameras/FirstPersonCamera" node_paths=PackedStringArray("weapons")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 script = ExtResource("3_cpts5")
-weapons = [NodePath("Evening Star"), NodePath("Kahuna")]
+weapons = [NodePath("Evening Star"), NodePath("Kahuna"), NodePath("Projectile Gun")]
 
 [node name="Evening Star" parent="Cameras/FirstPersonCamera/Weapons" instance=ExtResource("4_m7ewg")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, -0.5, 0, 2.18557e-08, 0, 1.4, 0.15)
 
 [node name="Kahuna" parent="Cameras/FirstPersonCamera/Weapons" instance=ExtResource("3_22u2e")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0.1, -0.2, 0.15)
+visible = false
+
+[node name="Projectile Gun" parent="Cameras/FirstPersonCamera/Weapons" instance=ExtResource("6_2vnxe")]
 transform = Transform3D(-2.18557e-08, -1.91069e-15, -0.5, -4.37114e-08, 0.5, 0, -0.5, -4.37114e-08, 2.18557e-08, 0, 1.4, 0.15)
 visible = false
 
